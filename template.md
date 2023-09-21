@@ -174,3 +174,119 @@ Data summary
 | pups_born_alive |         0 |          1.00 |  7.35 | 1.76 |  3.0 |  6.00 |  8.00 |  8.00 | 11.0 | ▁▃▂▇▁ |
 | pups_dead_birth |         0 |          1.00 |  0.33 | 0.75 |  0.0 |  0.00 |  0.00 |  0.00 |  4.0 | ▇▂▁▁▁ |
 | pups_survive    |         0 |          1.00 |  6.41 | 2.05 |  1.0 |  5.00 |  7.00 |  8.00 |  9.0 | ▁▃▂▇▇ |
+
+``` r
+view(litters_data)
+```
+
+``` r
+litters_data = read_csv(file = "./data/FAS_litters.csv",
+  skip = 10, col_names = FALSE)
+```
+
+    ## Rows: 40 Columns: 8
+    ## ── Column specification ────────────────────────────────────────────────────────
+    ## Delimiter: ","
+    ## chr (2): X1, X2
+    ## dbl (6): X3, X4, X5, X6, X7, X8
+    ## 
+    ## ℹ Use `spec()` to retrieve the full column specification for this data.
+    ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+
+``` r
+head(litters_data)
+```
+
+    ## # A tibble: 6 × 8
+    ##   X1    X2                 X3    X4    X5    X6    X7    X8
+    ##   <chr> <chr>           <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
+    ## 1 Con8  #3/5/2/2/95      28.5    NA    20     8     0     8
+    ## 2 Con8  #5/4/3/83/3      28      NA    19     9     0     8
+    ## 3 Con8  #1/6/2/2/95-2    NA      NA    20     7     0     6
+    ## 4 Con8  #3/5/3/83/3-3-2  NA      NA    20     8     0     8
+    ## 5 Con8  #2/2/95/2        NA      NA    19     5     0     4
+    ## 6 Con8  #3/6/2/2/95-3    NA      NA    20     7     0     7
+
+``` r
+litters_data = read_csv(file = "./data/FAS_litters.csv",
+  col_types = cols(
+    Group = col_character(),
+    `Litter Number` = col_character(),
+    `GD0 weight` = col_double(),
+    `GD18 weight` = col_double(),
+    `GD of Birth` = col_integer(),
+    `Pups born alive` = col_integer(),
+    `Pups dead @ birth` = col_integer(),
+    `Pups survive` = col_integer()
+  )
+)
+tail(litters_data)
+```
+
+    ## # A tibble: 6 × 8
+    ##   Group `Litter Number` `GD0 weight` `GD18 weight` `GD of Birth`
+    ##   <chr> <chr>                  <dbl>         <dbl>         <int>
+    ## 1 Low8  #79                     25.4          43.8            19
+    ## 2 Low8  #100                    20            39.2            20
+    ## 3 Low8  #4/84                   21.8          35.2            20
+    ## 4 Low8  #108                    25.6          47.5            20
+    ## 5 Low8  #99                     23.5          39              20
+    ## 6 Low8  #110                    25.5          42.7            20
+    ## # ℹ 3 more variables: `Pups born alive` <int>, `Pups dead @ birth` <int>,
+    ## #   `Pups survive` <int>
+
+``` r
+litters_data = read_csv(file = "./data/FAS_litters.csv",
+  col_types = cols(
+    Group = col_factor()
+  )
+)
+head(litters_data)
+```
+
+    ## # A tibble: 6 × 8
+    ##   Group `Litter Number` `GD0 weight` `GD18 weight` `GD of Birth`
+    ##   <fct> <chr>                  <dbl>         <dbl>         <dbl>
+    ## 1 Con7  #85                     19.7          34.7            20
+    ## 2 Con7  #1/2/95/2               27            42              19
+    ## 3 Con7  #5/5/3/83/3-3           26            41.4            19
+    ## 4 Con7  #5/4/2/95/2             28.5          44.1            19
+    ## 5 Con7  #4/2/95/3-3             NA            NA              20
+    ## 6 Con7  #2/2/95/3-2             NA            NA              20
+    ## # ℹ 3 more variables: `Pups born alive` <dbl>, `Pups dead @ birth` <dbl>,
+    ## #   `Pups survive` <dbl>
+
+``` r
+pups_data = read_csv("./data/FAS_pups.csv", col_types = "ciiiii")
+skimr::skim(pups_data)
+```
+
+|                                                  |           |
+|:-------------------------------------------------|:----------|
+| Name                                             | pups_data |
+| Number of rows                                   | 313       |
+| Number of columns                                | 6         |
+| \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_   |           |
+| Column type frequency:                           |           |
+| character                                        | 1         |
+| numeric                                          | 5         |
+| \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ |           |
+| Group variables                                  | None      |
+
+Data summary
+
+**Variable type: character**
+
+| skim_variable | n_missing | complete_rate | min | max | empty | n_unique | whitespace |
+|:--------------|----------:|--------------:|----:|----:|------:|---------:|-----------:|
+| Litter Number |         0 |             1 |   3 |  15 |     0 |       49 |          0 |
+
+**Variable type: numeric**
+
+| skim_variable | n_missing | complete_rate |  mean |   sd |  p0 | p25 | p50 | p75 | p100 | hist  |
+|:--------------|----------:|--------------:|------:|-----:|----:|----:|----:|----:|-----:|:------|
+| Sex           |         0 |          1.00 |  1.50 | 0.50 |   1 |   1 |   2 |   2 |    2 | ▇▁▁▁▇ |
+| PD ears       |        18 |          0.94 |  3.68 | 0.59 |   2 |   3 |   4 |   4 |    5 | ▁▅▁▇▁ |
+| PD eyes       |        13 |          0.96 | 12.99 | 0.62 |  12 |  13 |  13 |  13 |   15 | ▂▇▁▂▁ |
+| PD pivot      |        13 |          0.96 |  7.09 | 1.51 |   4 |   6 |   7 |   8 |   12 | ▂▇▂▂▁ |
+| PD walk       |         0 |          1.00 |  9.50 | 1.34 |   7 |   9 |   9 |  10 |   14 | ▆▇▇▂▁ |
