@@ -10,3 +10,14 @@ library(tidyverse)
 ```{r}
 litters_data = read_csv(file = "./data/FAS_litters.csv")
 ```
+
+```{r}
+names(litters_data)
+```
+
+```{r}
+litters_data = janitor::clean_names(litters_data)
+names(litters_data)
+```
+
+

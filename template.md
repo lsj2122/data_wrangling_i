@@ -28,3 +28,19 @@ litters_data = read_csv(file = "./data/FAS_litters.csv")
     ## 
     ## ℹ Use `spec()` to retrieve the full column specification for this data.
     ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+
+``` r
+names(litters_data)
+```
+
+    ## [1] "Group"             "Litter Number"     "GD0 weight"       
+    ## [4] "GD18 weight"       "GD of Birth"       "Pups born alive"  
+    ## [7] "Pups dead @ birth" "Pups survive"
+
+``` r
+litters_data = janitor::clean_names(litters_data)
+names(litters_data)
+```
+
+    ## [1] "group"           "litter_number"   "gd0_weight"      "gd18_weight"    
+    ## [5] "gd_of_birth"     "pups_born_alive" "pups_dead_birth" "pups_survive"
