@@ -91,6 +91,38 @@ pups_data = read_csv("./data/FAS_pups.csv", col_types = "ciiiii")
 skimr::skim(pups_data)
 ```
 
+```{r}
+library(readxl)
+mlb11_data = read_excel("data/mlb11.xlsx", n_max = 20)
+head(mlb11_data, 5)
+```
+
+```{r}
+library(haven)
+pulse_data = read_sas("./data/public_pulse_data.sas7bdat")
+head(pulse_data, 5)
+```
+
+```{r}
+pups_base = read.csv("./data/FAS_pups.csv")
+pups_readr = read_csv("./data/FAS_pups.csv")
+```
+
+```{r}
+View(pups_base)
+View(pups_readr)
+
+pups_base
+pups_readr
+
+pups_base$S
+pups_readr$S
+```
+
+
+
+
+
 
 
 
