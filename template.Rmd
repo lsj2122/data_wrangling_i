@@ -20,4 +20,19 @@ litters_data = janitor::clean_names(litters_data)
 names(litters_data)
 ```
 
+```{r}
+view(litters_data)
+```
+
+```{r}
+str(litters_data)
+```
+
+```{r}
+head(litters_data)
+```
+
+```{r}
+tail(litters_data)
+```
 
