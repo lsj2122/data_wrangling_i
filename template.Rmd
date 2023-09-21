@@ -36,3 +36,16 @@ head(litters_data)
 tail(litters_data)
 ```
 
+```{r}
+litters_data
+```
+
+```{r}
+tail(litters_data, 5)
+```
+
+```{r}
+skimr::skim(litters_data)
+```
+
+
